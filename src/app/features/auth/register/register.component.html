@@ -1,0 +1,23 @@
+
+<form class="main-form" [formGroup]="registerForm">
+    
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    
+      <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" matInput  formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+          <button  (click)="register()" mat-stroked-button color="primary"><mat-icon  fontIcon="login"/>Register</button>
+      
+</form>
+
+   

@@ -1,0 +1,13 @@
+.auth-container{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-group{
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
