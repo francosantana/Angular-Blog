@@ -1,0 +1,27 @@
+
+.main-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3%;
+  
+}
+
+.content-input{
+ width: 70%;
+}
+
+
+.small-inputs mat-form-field{
+    margin: 2.5px
+}
+
+@media (max-width: 600px){
+    .small-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        
+    }
+}

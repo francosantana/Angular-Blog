@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -27,10 +29,12 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email])
   })
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router){}
 
   login(){
     if(!this.loginForm.valid) return
-    this.authService.loginObs(this.loginForm.value as UserLogin).subscribe()
+    this.authService.loginObs(this.loginForm.value as UserLogin).pipe(tap(
+      ()=>{this.router.navigate(['/create'])}
+    )).subscribe()
   }
 }
