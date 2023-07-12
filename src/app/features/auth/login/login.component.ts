@@ -31,10 +31,6 @@ export class LoginComponent {
 
   login(){
     if(!this.loginForm.valid) return
-    console.log(this.loginForm.value)
-    this.authService.loginObs(this.loginForm.value as UserLogin)
-    .subscribe((response)=>{
-      console.log(response)
-    })
+    this.authService.loginObs(this.loginForm.value as UserLogin).subscribe()
   }
 }

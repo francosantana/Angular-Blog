@@ -11,10 +11,13 @@ export interface UserLogin{
 }
 
 export interface User {
-    _id: string,
+    token: string,
+    user: {
+        _id: string,
         name: string,
         email: string,
         role: string
+    }
 }
 
 export interface UserHttpLogin{
