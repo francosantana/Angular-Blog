@@ -2,8 +2,18 @@
     <span>Blogs.</span>
     <span class="spacer"></span>
     
-    <button routerLink="/auth" mat-stroked-button color="primary">
-         <mat-icon>login</mat-icon> 
-         Login/Register
-    </button>
+    <ng-container *ngIf="!(_authService.user | async); else createButton">
+     <button routerLink="/auth" mat-stroked-button color="primary">
+          <mat-icon>login</mat-icon> 
+          Login/Register
+     </button>
+    </ng-container>
+
+    <ng-template #createButton>
+     <button  routerLink="/create" mat-stroked-button color="primary">
+          <mat-icon>create</mat-icon> 
+          Create Blog
+          </button>
+    </ng-template>
+
   </mat-toolbar>
