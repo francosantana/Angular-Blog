@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'create',
     loadComponent: ()=> import("../features/blogs/create/create.component").then((m)=>m.CreateComponent),
     canActivate: [authGuard("required")]
+  },
+  {
+    path: 'blogs',
+    loadComponent: ()=> import("../features/blogs/blogs/blogs.component").then((m)=>m.BlogsComponent),
   }
 ];
 

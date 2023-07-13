@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environment/environment';
-import { Blog } from 'src/app/shared/models/blog.model';
+import { BlogCreate, BlogsHttpGet } from 'src/app/shared/models/blog.model';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -12,12 +12,16 @@ export class BlogService {
 
   constructor(private http: HttpClient, private snack: MatSnackBar) { }
 
-  createObs(blog: Blog){
+  createObs(blog: BlogCreate){
     return this.http.post(environment.apiUrl + 'api/v1/blogs/', blog).pipe(
       tap(
-        (response)=>{
+        ()=>{
           this.snack.open('Post created', 'Dismiss', {duration: 3000})
         }
       ))
+  }
+
+  get getObs(){
+    return this.http.get<BlogsHttpGet>(environment.apiUrl + 'api/v1/blogs/')
   }
 }

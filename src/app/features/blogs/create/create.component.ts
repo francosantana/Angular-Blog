@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from 'src/app/core/services/blog.service';
-import { Blog } from 'src/app/shared/models/blog.model';
+import { BlogCreate } from 'src/app/shared/models/blog.model';
 
 @Component({
   selector: 'app-create',
@@ -17,8 +17,8 @@ import { Blog } from 'src/app/shared/models/blog.model';
 export class CreateComponent {
 
   createForm = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(200)]),
     image: new FormControl('', [Validators.required])
   })
 
@@ -26,7 +26,7 @@ export class CreateComponent {
 
   create(){
     if(!this.createForm.valid) return
-    this.blogService.createObs(this.createForm.value as Blog).subscribe()
+    this.blogService.createObs(this.createForm.value as BlogCreate).subscribe()
   }
 
 }
