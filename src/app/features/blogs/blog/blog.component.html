@@ -1,17 +1,12 @@
-<ng-container *ngIf="blog">
+<ng-container *ngIf="blog else notFound">
     <div class="blog-container">
         <div class="blog">
             <div class="blog-header">
                 <div class="blog-title">
                     <h1>{{blog.title}}</h1>
-                    <ng-container *ngIf="user; else loginWarn">
+                    <ng-container *ngIf="user">
                         <p>By {{user.name}}</p>
-                    </ng-container>
-
-                    <ng-template #loginWarn>
-                        <p >Login to see author</p>
-                    </ng-template>
-                    
+                    </ng-container>                    
                 </div>
                 
                 <span class="date">{{blog.createdAt | date}}</span>
@@ -24,3 +19,7 @@
         </div>
     </div>
 </ng-container>
+
+<ng-template #notFound>
+    Blog not found
+</ng-template>

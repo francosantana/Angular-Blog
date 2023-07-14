@@ -27,29 +27,22 @@ export class BlogComponent implements OnInit {
     private authService: AuthService){}
 
   ngOnInit(): void {
+
      // Handle response
-      this.fetchUserOnChange.subscribe(result => {
-        if(result){
-          this.blog = result.data
-          this.authService.getUser(result.data.author).subscribe(
-            response => {
-              if(response)
-              this.user = response
-            }
-          )
-        } else  {
-          this.blog = null
+      this.fetchBlogOnUrl.subscribe(value => {
+        if(value){
+          this.blog = value.blog
+          this.user = value.user
         }
+        
       })
   }
 
-  // .map() -> get the param from the url
-  // .switch -> on url param changes, we suscribe to the http observable and return everything as one observable
-  get fetchUserOnChange(){
+  get fetchBlogOnUrl(){
     return this.route.paramMap.pipe(  
       map(params => params.get('id')),
       switchMap( id => {  
-       if(id) return this.blogService.getUnique(id)
+       if(id) return this.blogService.fetchBlog(id)
        return of(null)
       }))
   }

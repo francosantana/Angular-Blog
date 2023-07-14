@@ -26,7 +26,7 @@ export class CreateComponent {
 
   create(){
     if(!this.createForm.valid) return
-    this.blogService.createObs(this.createForm.value as BlogCreateParam).subscribe()
+    this.blogService.create(this.createForm.value as BlogCreateParam).subscribe()
   }
 
 }

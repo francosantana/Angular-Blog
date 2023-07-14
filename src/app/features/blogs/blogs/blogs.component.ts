@@ -25,7 +25,7 @@ export class BlogsComponent implements OnInit{
   constructor (public blogService: BlogService){}
 
   ngOnInit(): void {
-    this.blogService.getObs.pipe(tap(
+    this.blogService.getAll.pipe(tap(
       (response)=>{
         this.blogs = response.data
       }
