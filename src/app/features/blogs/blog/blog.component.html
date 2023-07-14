@@ -1,0 +1,26 @@
+<ng-container *ngIf="blog">
+    <div class="blog-container">
+        <div class="blog">
+            <div class="blog-header">
+                <div class="blog-title">
+                    <h1>{{blog.title}}</h1>
+                    <ng-container *ngIf="user; else loginWarn">
+                        <p>By {{user.name}}</p>
+                    </ng-container>
+
+                    <ng-template #loginWarn>
+                        <p >Login to see author</p>
+                    </ng-template>
+                    
+                </div>
+                
+                <span class="date">{{blog.createdAt | date}}</span>
+                
+            </div>
+            <mat-divider></mat-divider>
+             <div class="blog-content">
+                <p>{{blog.description}}</p>
+             </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { UserLogin, UserRegister } from 'src/app/shared/models/user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { tap, BehaviorSubject} from 'rxjs';
-import { User, UserHttpLogin } from 'src/app/shared/models/user.model';
+import { tap, BehaviorSubject, map, of , Observable} from 'rxjs';
+import { User, UserHttpLogin, UserListHttpLogin, UserLogin, UserRegister , RawUser} from 'src/app/shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +29,17 @@ export class AuthService {
         this.user.next(response.data)
         this.snack.open("Loged, redirecting to blogs", "Dismiss", {duration: 2000})
       })
+    )
+  }
+
+  getUser(id: string) : Observable<RawUser | null> {
+    if(!this.user.value){
+      return of(null)
+    }
+    return this.http.get<UserListHttpLogin>(environment.apiUrl + 'api/v1/user/list').pipe(
+      map(
+        users => users.data.find(obj => obj._id == id) as  RawUser
+      ),
     )
   }
 }

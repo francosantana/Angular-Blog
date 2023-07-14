@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { tap } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 import { BlogService } from 'src/app/core/services/blog.service';
 import { Blog } from 'src/app/shared/models/blog.model';
@@ -16,7 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.css'],
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDividerModule, TimePipe, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatDividerModule, TimePipe, MatButtonModule, MatIconModule, RouterModule],
 })
 export class BlogsComponent implements OnInit{
   blogs: [Blog] | null = null

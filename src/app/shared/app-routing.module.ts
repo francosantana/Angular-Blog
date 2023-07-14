@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'blogs',
     loadComponent: ()=> import("../features/blogs/blogs/blogs.component").then((m)=>m.BlogsComponent),
+  },
+  {
+    path: 'blog/:id',
+    loadComponent: ()=> import("../features/blogs/blog/blog.component").then((m)=>m.BlogComponent),
   }
 ];
 

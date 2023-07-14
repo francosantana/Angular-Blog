@@ -15,7 +15,12 @@ export interface Blog{
     updatedAt: string
 }
 
-export interface BlogsHttpGet{
+export interface BlogsHttpGetAll{
     status: string,
     data: [Blog]
+}
+
+export interface BlogHttpGet{
+    status: string,
+    data: Blog
 }

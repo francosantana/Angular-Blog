@@ -18,7 +18,7 @@
     
                 <mat-divider></mat-divider>
                 <mat-card-actions class="actions">
-                    <button mat-stroked-button color="primary">View</button>
+                    <button [routerLink]="['/blog', blog._id]" mat-stroked-button color="primary">View</button>
                     <button mat-stroked-button color="primary"><mat-icon fontIcon="share"></mat-icon>Share</button>
                 </mat-card-actions>
     

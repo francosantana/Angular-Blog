@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environment/environment';
-import { BlogCreate, BlogsHttpGet } from 'src/app/shared/models/blog.model';
+import { BlogCreate, BlogsHttpGetAll, BlogHttpGet } from 'src/app/shared/models/blog.model';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -22,6 +22,10 @@ export class BlogService {
   }
 
   get getObs(){
-    return this.http.get<BlogsHttpGet>(environment.apiUrl + 'api/v1/blogs/')
+    return this.http.get<BlogsHttpGetAll>(environment.apiUrl + 'api/v1/blogs/')
+  }
+
+  getUnique(id: string){
+    return this.http.get<BlogHttpGet>(environment.apiUrl + 'api/v1/blogs/' + id).pipe()
   }
 }

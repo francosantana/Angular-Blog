@@ -24,3 +24,10 @@ export interface UserHttpLogin{
     status: string,
     data: User
 }
+
+export type RawUser = User['user'];
+
+export interface UserListHttpLogin{
+    status: string,
+    data: [User['user']]
+}
