@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { BlogService } from 'src/app/core/services/blog.service';
 import { Blog } from 'src/app/shared/models/blog.model';
-import { RawUser } from 'src/app/shared/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
 
 import {MatDividerModule} from '@angular/material/divider';
 
@@ -19,7 +19,7 @@ import {MatDividerModule} from '@angular/material/divider';
 })
 export class BlogComponent implements OnInit {
   blog: Blog| null = null
-  user: RawUser | null = null
+  user: User | null = null
 
   constructor(
     private route: ActivatedRoute, 

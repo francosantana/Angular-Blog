@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UserLogin } from 'src/app/shared/models/user.model';
+import { UserLoginParam } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,7 @@ export class LoginComponent {
 
   login(){
     if(!this.loginForm.valid) return
-    this.authService.loginObs(this.loginForm.value as UserLogin).pipe(tap(
+    this.authService.loginObs(this.loginForm.value as UserLoginParam).pipe(tap(
       ()=>{this.router.navigate(['/create'])}
     )).subscribe()
   }

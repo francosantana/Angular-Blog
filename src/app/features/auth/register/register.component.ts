@@ -8,7 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UserRegister } from 'src/app/shared/models/user.model';
+import { UserRegisterParam } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,7 @@ export class RegisterComponent  {
 
   register(){
     if(!this.registerForm.valid) return
-    this.authService.registerObs(this.registerForm.value as UserRegister).subscribe()
+    this.authService.registerObs(this.registerForm.value as UserRegisterParam).subscribe()
   }
 
 

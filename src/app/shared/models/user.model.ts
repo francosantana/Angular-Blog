@@ -1,33 +1,41 @@
 
-export interface UserRegister{
+// Function params ---------------
+export interface UserRegisterParam{
     name: string,
     password: string,
     email: string
 }
 
-export interface UserLogin{
+export interface UserLoginParam{
     password: string,
     email: string
 }
 
+
+// Generic types -----------
 export interface User {
-    token: string,
-    user: {
         _id: string,
         name: string,
         email: string,
         role: string
-    }
 }
 
+
+export interface JwtUser { 
+    token: string,
+    user: User
+}
+
+
+// Http Response types (they have status and data) ----------
 export interface UserHttpLogin{
     status: string,
-    data: User
+    data: JwtUser
 }
 
-export type RawUser = User['user'];
-
-export interface UserListHttpLogin{
+export interface UserListHttpLogin{ 
     status: string,
-    data: [User['user']]
+    data: [User]
 }
+
+

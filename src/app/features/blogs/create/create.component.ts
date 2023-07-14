@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from 'src/app/core/services/blog.service';
-import { BlogCreate } from 'src/app/shared/models/blog.model';
+import { BlogCreateParam } from 'src/app/shared/models/blog.model';
 
 @Component({
   selector: 'app-create',
@@ -26,7 +26,7 @@ export class CreateComponent {
 
   create(){
     if(!this.createForm.valid) return
-    this.blogService.createObs(this.createForm.value as BlogCreate).subscribe()
+    this.blogService.createObs(this.createForm.value as BlogCreateParam).subscribe()
   }
 
 }
