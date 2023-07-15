@@ -41,7 +41,7 @@ export class BlogService {
       switchMap(blog =>{
         if (blog){
           return this.authService.getUser(blog.data.author).pipe(
-            map(user => {return {blog: blog.data, user}})
+            map(user => {return {...blog.data, user}})
           )
         } else {
           return of(null)

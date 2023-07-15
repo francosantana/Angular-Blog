@@ -1,3 +1,4 @@
+import { User } from "./user.model"
 
 // Function params --------
 export interface BlogCreateParam{
@@ -17,6 +18,10 @@ export interface Blog{
     author: string,
     createdAt: string,
     updatedAt: string
+}
+
+export interface BlogWithUser extends Blog{
+        user: User | null,
 }
 
 
