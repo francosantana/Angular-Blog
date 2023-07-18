@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'blog/:id',
     loadComponent: ()=> import("../features/blogs/blog/blog.component").then((m)=>m.BlogComponent),
+  },
+  {
+    path: 'profile',
+    loadComponent: ()=> import("../features/profile/profile.component").then((m)=>m.ProfileComponent),
   }
 ];
 
