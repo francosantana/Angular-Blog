@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <ng-container *ngIf="(authService.user | async) as user">
+    <div class="profile">
+        <div class="profile-header">
+            <mat-icon>person</mat-icon>
+            <h2 style="margin: 0;">{{user.email}}</h2>
+        </div>
+        <mat-divider/>
+        blogs
+    </div>
+</ng-container>
+</div>
