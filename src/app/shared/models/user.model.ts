@@ -33,6 +33,11 @@ export interface UserHttpLogin{
     data: JwtUser
 }
 
+export interface UserHttpProfile{
+    status: string,
+    data: User
+}
+
 export interface UserListHttpLogin{ 
     status: string,
     data: [User]

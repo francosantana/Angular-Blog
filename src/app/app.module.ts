@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -16,6 +16,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+export function initAuth(authService: AuthService) {
+  return ()=> (authService.getJWt? authService.getProfile() : null)
+}
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   providers: [
     AuthService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
+    {provide: APP_INITIALIZER, useFactory: initAuth,deps: [AuthService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
