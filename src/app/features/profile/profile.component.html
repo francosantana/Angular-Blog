@@ -6,7 +6,24 @@
             <h2 style="margin: 0;">{{user.email}}</h2>
         </div>
         <mat-divider/>
-        blogs
+        <ng-container *ngIf="userBlogs">
+            <div *ngFor="let blog of userBlogs" class="blogs">
+                <div class="blog">
+                    <div class="blog-header">
+                        <h3>{{blog.title}}</h3>
+                        <span>{{blog.createdAt | date}}</span>
+                    </div>
+                    
+                    <p>{{blog.description.slice(0, 50)}}...</p>
+                    <div class="blog-buttons">
+                        <button style="margin-right: 5px;" mat-stroked-button color="primary"> <mat-icon>edit</mat-icon> Edit</button>
+                        <button (click)="deleteBlog(blog._id)" mat-stroked-button color="warn"> <mat-icon>delete</mat-icon> Delete</button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+
+        </ng-container>
     </div>
 </ng-container>
 </div>

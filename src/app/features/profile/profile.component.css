@@ -10,9 +10,23 @@
     padding: 10px;
     border-radius: 10px;
     background-color: white;
+        
 }
 
 .profile-header{
     display: flex;
     align-items: center;
+}
+
+.blog{
+    margin: 10px
+}
+
+.blog-header{
+    display: flex;
+    align-items: center;
+}
+.blog-header h3{
+    margin: 0;
+    margin-right: 10px;
 }

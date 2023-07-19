@@ -37,7 +37,7 @@ export class AuthService {
     )
   }
 
-  getUser(id: string) : Observable<User | null> {
+  getUserFromList(id: string) : Observable<User | null> {
     if(!this.user.value){
       return of(null)
     }

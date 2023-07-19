@@ -29,7 +29,14 @@ export class BlogService {
   }
 
   getUnique(id: string){
-    return this.http.get<BlogHttpGet>(environment.apiUrl + 'api/v1/blogs/' + id).pipe()
+    return this.http.get<BlogHttpGet>(environment.apiUrl + 'api/v1/blogs/' + id)
+  }
+
+  //Return all the blogs of a given user
+  fetchUserBlogs(user_id: string){
+      return this.getAll.pipe(
+        map(value => value.data.filter(blog => blog.author == user_id))
+      )
   }
 
   // Includes author data with the blog
@@ -40,7 +47,7 @@ export class BlogService {
     return this.getUnique(id).pipe(
       switchMap(blog =>{
         if (blog){
-          return this.authService.getUser(blog.data.author).pipe(
+          return this.authService.getUserFromList(blog.data.author).pipe(
             map(user => {return {...blog.data, user}})
           )
         } else {
@@ -48,5 +55,9 @@ export class BlogService {
         }
       }),
     )
+  }
+
+  deleteBlog(id: string){
+    return this.http.delete(environment.apiUrl + `api/v1/blogs/${id}/`)
   }
 }
